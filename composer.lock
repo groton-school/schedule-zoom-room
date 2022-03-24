@@ -1,0 +1,144 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b230b45ca02c11cef25c11b3df290a02",
+    "packages": [
+        {
+            "name": "battis/hydratable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/battis/hydratable.git",
+                "reference": "1d38d674b6d3e6cbf72cfe3a658ff4a364ca47f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/battis/hydratable/zipball/1d38d674b6d3e6cbf72cfe3a658ff4a364ca47f8",
+                "reference": "1d38d674b6d3e6cbf72cfe3a658ff4a364ca47f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Battis\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Seth Battis",
+                    "email": "seth@battis.net"
+                }
+            ],
+            "description": "Hydrate serialized objects with defaults and overrides",
+            "support": {
+                "issues": "https://github.com/battis/hydratable/issues",
+                "source": "https://github.com/battis/hydratable/tree/master"
+            },
+            "time": "2021-07-29T14:05:53+00:00"
+        },
+        {
+            "name": "kigkonsult/icalcreator",
+            "version": "v2.39.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iCalcreator/iCalcreator.git",
+                "reference": "722e161d1a25c3ceec1692642d64a7f2cf5faee9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iCalcreator/iCalcreator/zipball/722e161d1a25c3ceec1692642d64a7f2cf5faee9",
+                "reference": "722e161d1a25c3ceec1692642d64a7f2cf5faee9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "ext-simplexml": "*",
+                "ext-zlib": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpcompatibility/php-compatibility": ">=9.3.5",
+                "phpstan/phpstan": ">=0.9.3",
+                "phpunit/phpunit": ">=6.5.13",
+                "squizlabs/php_codesniffer": ">=3.5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
+                "psr-4": {
+                    "Kigkonsult\\Icalcreator\\": [
+                        "src/",
+                        "src/Util/",
+                        "src/Traits/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Kjell-Inge Gustafsson",
+                    "email": "ical@kigkonsult.se"
+                }
+            ],
+            "description": "iCalcreator is the PHP implementation of rfc2445/rfc5545, management of calendar information",
+            "keywords": [
+                "alarm",
+                "calendar",
+                "daylight",
+                "event",
+                "management",
+                "rfc2445",
+                "rfc5545",
+                "rfc6321",
+                "rfc7986",
+                "standard",
+                "todo",
+                "vCalendar",
+                "valarm",
+                "vevent",
+                "vfreebusy",
+                "vjournal",
+                "vtimezone",
+                "vtodo"
+            ],
+            "support": {
+                "issues": "https://github.com/iCalcreator/iCalcreator/issues",
+                "source": "https://github.com/iCalcreator/iCalcreator/tree/v2.39.2"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/kigkonsult",
+                    "type": "other"
+                }
+            ],
+            "time": "2021-06-28T09:19:24+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "battis/hydratable": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}

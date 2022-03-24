@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zoom Room Scheduler</title>
+    </head>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 10pt;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-rows: 1fr auto 1.618fr;
+            height: 100vh;
+        }
+        
+        #content {
+            grid-row: 2;
+            grid-column: 2;
+        }
+    
+        form {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1em;
+        }
+        
+        #blocks-grid {
+            display: grid;
+            grid-template-columns: auto auto 1fr;
+            gap: 0.5em;
+        }
+    </style>
+    <body>
+        <div id="content">
+            <h1>Schedule Zoom Room</h1>
+            <form id="form" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                <label>Faculty Schedule URL</label>
+                <input name="schedule_url" type="url" />
+                
+                <label>Start</label>
+                <input name="start" type="date" />
+                
+                <label>End Extraction</label>
+                <input name="end_extract" type="date" />
+                
+                <label>End Schedule</label>
+                <input name="end_schedule" type="date" />
+                
+                <label>Blocks</label>
+                <div id="blocks-grid">
+                    <span></span>
+                    <span></span>
+                    <label>Zoom Room URL</label>
+                    
+                    <label>Red</label>
+                    <input name="blocks[]" type="checkbox" value="RD"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+    
+                    <label>Orange</label>
+                    <input name="blocks[]" type="checkbox" value="OR"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+    
+                    <label>Yellow</label>
+                    <input name="blocks[]" type="checkbox" value="YE"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+    
+                    <label>Green</label>
+                    <input name="blocks[]" type="checkbox" value="GR"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+    
+                    <label>Light Blue</label>
+                    <input name="blocks[]" type="checkbox" value="LB"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+    
+                    <label>Dark Blue</label>
+                    <input name="blocks[]" type="checkbox" value="DB"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+    
+                    <label>Purple</label>
+                    <input name="blocks[]" type="checkbox" value="PR"/>
+                    <input name="zoom_urls[]" type="url" disabled />
+                </div>
+            </form>
+            <button type="submit" form="form">Go</button>
+        </div>
+        <script>
+            document.querySelector('input[name="start"]').addEventListener('change', start => {
+                const end = document.querySelector('input[name="end_extract"]');
+                if (start.value != '' && end.value == '') {
+                    console.log(start.value);
+                }
+            })
+            document.querySelector('input[name="start"').value = (new Date()).toLocaleDateString('en-CA');
+            document.querySelector('input[name="end_extract"]').value = (new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)).toLocaleDateString('en-CA');
+            document.querySelector('input[name="end_schedule"]').value = document.querySelector('input[name="end_extract"]').value;
+            const toggleZoomUrl = zoomUrl => {
+                zoomUrl.disabled = !zoomUrl.disabled;
+                if (!zoomUrl.disabled && zoomUrl.value == '') {
+                    let prev = undefined;
+                    try {
+                        Array.from(document.querySelectorAll('input[name="zoom_urls[]"]:not([disabled])'))
+                            .forEach(sibling => {
+                                if (sibling === zoomUrl) {
+                                    zoomUrl.value = prev.value;
+                                } else {
+                                     prev = sibling;
+                                }
+                            });
+                    } catch (error) {
+                        // ignore
+                    }
+                }
+            }
+            Array.from(document.querySelectorAll('input[name="blocks[]"]')).forEach(checkbox => {
+                checkbox.addEventListener('click', toggleZoomUrl.bind(null, checkbox.nextElementSibling));
+            });
+        </script>
+    </body>
+</html>
