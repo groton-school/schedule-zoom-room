@@ -14,7 +14,7 @@ class EventTransform
      */
     public static function replaceProperties($calendar, $props)
     {
-        while ($event = $calendar->getComponent()) {
+        while ($event = $calendar->getComponent('vevent')) {
             /** @var Vevent $event */
             foreach ($props as $prop => $value) {
                 call_user_func_array(
@@ -32,11 +32,9 @@ class EventTransform
      * @param $rule
      */
     public static function resetRecurrence($calendar, $rule) {
-        while ($event = $calendar->getComponent()) {
+        while ($event = $calendar->getComponent('vevent')) {
             /** @var Vevent $event */
-            while($event->deleteRrule()) {
-                continue;
-            }
+            // FIXME safer if it deleted existing RRULE, but moot coming from Blackbaud 
             $event->setRrule($rule);
             $calendar->setComponent($event, $event->getUid());
         }

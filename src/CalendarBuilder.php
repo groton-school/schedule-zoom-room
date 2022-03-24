@@ -18,7 +18,7 @@ class CalendarBuilder
             if (!$result) {
                 $result = $calendar;
             } else {
-                while ($event = $calendar->getComponent()) {
+                while ($event = $calendar->getComponent('vevent')) {
                     /** @var Vevent $event */
                     $result->setComponent($event, $event->getUid());
                 }
@@ -36,6 +36,7 @@ class CalendarBuilder
         $calendar->setXprop(Vcalendar::X_WR_CALNAME, 'Zoom Room Schedule');
         $calendar->setXprop(Vcalendar::X_WR_CALDESC, 'Class meeting schedule for a Zoom Room');
         header('Content-Type: text/calendar');
+        header('Content-Disposition: attachment; filename="zoom-room-schedule.ics"');
         echo $calendar->createCalendar();
     }
 }
