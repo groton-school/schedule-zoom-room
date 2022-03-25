@@ -40,12 +40,11 @@ class CalendarBuilder
             self::FILENAME => 'Zoom Room Schedule'
         ]);
         
-        $filename = strtolower(preg_replace('/\s+/g', '-', $params[self::FILENAME]));
         $params[self::CALENDAR]->setMethod(Vcalendar::PUBLISH);
         $params[self::CALENDAR]->setXprop(Vcalendar::X_WR_CALNAME, $params[self::FILENAME]);
         $params[self::CALENDAR]->setXprop(Vcalendar::X_WR_CALDESC, 'Class meeting schedule for a Zoom Room');
         header('Content-Type: text/calendar');
-        header("Content-Disposition: attachment; filename=\"{$filename}.ics\"");
+        header("Content-Disposition: attachment; filename=\"{$params[self::FILENAME]}.ics\"");
         echo $params[self::CALENDAR]->createCalendar();
     }
 }
