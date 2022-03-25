@@ -90,7 +90,10 @@
                 <label>Calendar name</label>
                 <input name="calendar_name" type="text" value="Zoom Room Schedule"/>
             </form>
-            <button type="submit" form="form">Go</button>
+            <div>
+                <button type="submit" form="form">Go</button>
+                <button id="reset">Reset</button>
+            </div>
         </div>
         <script>
             const cookies = document.cookie.split('; ');
@@ -153,6 +156,8 @@
             zoomUrls.forEach(zoomUrl => {
                 zoomUrl.addEventListener('input', resizeToFitUrl.bind(null, zoomUrl));
             })
+            
+            document.querySelector('button#reset').addEventListener('click', () => location.reload());
         </script>
     </body>
 </html>
