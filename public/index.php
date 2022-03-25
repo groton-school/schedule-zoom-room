@@ -36,5 +36,8 @@ if(empty($_POST)) {
             $schedule = $blockSchedule;
         }
     }
-    CalendarBuilder::export($schedule);
+    CalendarBuilder::export([
+        CalendarBuilder::CALENDAR => $schedule,
+        CalendarBuilder::FILENAME => $_POST['calendar_name']
+    ]);
 }

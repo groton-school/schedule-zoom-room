@@ -2,11 +2,15 @@
 
 namespace Groton\ScheduleZoomRoom;
 
+use Battis\Hydratable\Hydrate;
 use Kigkonsult\Icalcreator\Vcalendar;
 use Kigkonsult\Icalcreator\Vevent;
 
 class CalendarBuilder
-{
+{    
+    const CALENDAR = 'calendar';
+    const FILENAME = 'filename';
+    
     /**
      * @param Vcalendar[] $calendars
      */
@@ -30,13 +34,18 @@ class CalendarBuilder
     /**
      * @param Vcalendar $calendar
      */
-    public static function export($calendar)
+    public static function export($params)
     {
-        $calendar->setMethod(Vcalendar::PUBLISH);
-        $calendar->setXprop(Vcalendar::X_WR_CALNAME, 'Zoom Room Schedule');
-        $calendar->setXprop(Vcalendar::X_WR_CALDESC, 'Class meeting schedule for a Zoom Room');
+        $params = (new Hydrate())($params, [
+            self::FILENAME => 'Zoom Room Schedule'
+        ]);
+        
+        $filename = strtolower(preg_replace('/\s+/g', '-', $params[self::FILENAME]));
+        $params[self::CALENDAR]->setMethod(Vcalendar::PUBLISH);
+        $params[self::CALENDAR]->setXprop(Vcalendar::X_WR_CALNAME, $params[self::FILENAME]);
+        $params[self::CALENDAR]->setXprop(Vcalendar::X_WR_CALDESC, 'Class meeting schedule for a Zoom Room');
         header('Content-Type: text/calendar');
-        header('Content-Disposition: attachment; filename="zoom-room-schedule.ics"');
-        echo $calendar->createCalendar();
+        header("Content-Disposition: attachment; filename=\"{$filename}.ics\"");
+        echo $params[self::CALENDAR]->createCalendar();
     }
 }
