@@ -84,15 +84,38 @@
             <button type="submit" form="form">Go</button>
         </div>
         <script>
+            const cookies = document.cookie.split('; ');
+            const getCookie = (key, value) =>  cookies.reduce((prev, curr) => {
+                    try {
+                        const [ignore, result] = curr.match(new RegExp(`^${key}=(.*)$`));
+                        if (result) {
+                            return result;
+                        }
+                    } catch (error) {
+                        // do nothing
+                    }
+                    return prev;
+                }, value)
+            const setCookie = (input, key) => {
+                document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(input.value)}`;
+            }
+            const trackWithCookie = (key, value) => {
+                const input = document.querySelector(`input[name="${key}"]`);
+                input.value = getCookie(key, value);
+                input.addEventListener('change', setCookie.bind(null, input, key));
+                return input.value;
+            }
+            const start = new Date(trackWithCookie('start', (new Date()).toLocaleDateString('en-CA')));
+            const end_extract = trackWithCookie('end_extract', (new Date(start.getTime() + start.getTimezoneOffset() * 60 * 1000 + 7 * 24 * 60 * 60 * 1000)).toLocaleDateString('en-CA'));
+            trackWithCookie('end_schedule', end_extract);
+            
             document.querySelector('input[name="start"]').addEventListener('change', start => {
                 const end = document.querySelector('input[name="end_extract"]');
                 if (start.value != '' && end.value == '') {
                     console.log(start.value);
                 }
             })
-            document.querySelector('input[name="start"').value = (new Date()).toLocaleDateString('en-CA');
-            document.querySelector('input[name="end_extract"]').value = (new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)).toLocaleDateString('en-CA');
-            document.querySelector('input[name="end_schedule"]').value = document.querySelector('input[name="end_extract"]').value;
+            
             const toggleZoomUrl = zoomUrl => {
                 zoomUrl.disabled = !zoomUrl.disabled;
                 if (!zoomUrl.disabled && zoomUrl.value == '') {
