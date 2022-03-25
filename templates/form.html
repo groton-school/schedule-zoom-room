@@ -29,6 +29,12 @@
             grid-template-columns: auto auto 1fr;
             gap: 0.5em;
         }
+        
+        .test {
+            position: absolute;
+            color: hsla(0, 0%, 0%, 0);
+            white-space: nowrap;
+        }
     </style>
     <body>
         <div id="content">
@@ -137,6 +143,28 @@
             Array.from(document.querySelectorAll('input[name="blocks[]"]')).forEach(checkbox => {
                 checkbox.addEventListener('click', toggleZoomUrl.bind(null, checkbox.nextElementSibling));
             });
+            
+            const zoomUrls = Array.from(document.querySelectorAll('input[name="zoom_urls[]"]'));
+            const initialWidth = zoomUrls[0].clientWidth;
+            const resizeToFitUrl = (input) => {
+                const test = document.createElement('div');
+                test.classList.add('test');
+                    document.body.appendChild(test);
+                let width = initialWidth;
+                zoomUrls.forEach(zoomUrl => {
+                    test.innerText = zoomUrl.value;
+                    width = Math.max(width, test.clientWidth);
+                })
+                test.remove();
+                if (width > initialWidth) {
+                    input.parentElement.style.gridTemplateColumns = `auto auto calc(${width}px + 1em)`;
+                } else {
+                    input.parentElement.style.gridTemplateColumns = 'auto auto 1fr';
+                }
+            }
+            zoomUrls.forEach(zoomUrl => {
+                zoomUrl.addEventListener('input', resizeToFitUrl.bind(null, zoomUrl));
+            })
         </script>
     </body>
 </html>
