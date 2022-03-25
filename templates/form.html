@@ -127,21 +127,6 @@
             
             const toggleZoomUrl = zoomUrl => {
                 zoomUrl.disabled = !zoomUrl.disabled;
-                if (!zoomUrl.disabled && zoomUrl.value == '') {
-                    let prev = undefined;
-                    try {
-                        Array.from(document.querySelectorAll('input[name="zoom_urls[]"]:not([disabled])'))
-                            .forEach(sibling => {
-                                if (sibling === zoomUrl) {
-                                    zoomUrl.value = prev.value;
-                                } else {
-                                     prev = sibling;
-                                }
-                            });
-                    } catch (error) {
-                        // ignore
-                    }
-                }
             }
             Array.from(document.querySelectorAll('input[name="blocks[]"]')).forEach(checkbox => {
                 checkbox.addEventListener('click', toggleZoomUrl.bind(null, checkbox.nextElementSibling));
