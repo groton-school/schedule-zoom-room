@@ -58,11 +58,10 @@
 
                 <label>Blocks</label>
                 <div id="schedule">
-                    <select id="schedule-picker" onchange="updateSchedule()">
+                    <select name="schedule" onchange="updateSchedule(this)">
                         <option value="academic">Academic Year</option>
                         <option value="grace">G.R.A.C.E.</option>
                     </select>
-                    <input type="hidden" name="schedule" />
 
                     <div id="academic" class="blocks-grid">
                         <span></span>
@@ -149,16 +148,16 @@
             }
 
             const trackWithCookie = (key, value) => {
-                const input = document.querySelector(`input[name="${key}"]`);
+                const input = document.querySelector(`[name="${key}"]`);
                 input.value = getCookie(key, value);
                 input.addEventListener('change', setCookie.bind(null, input, key));
                 return input.value;
             }
 
-            const updateSchedule = () => {
-                const schedulePicker = document.querySelector('#schedule-picker');
-                const schedule = document.querySelector('input[name="schedule"]');
-                schedule.value = schedulePicker.value;
+            const updateSchedule = (schedule) => {
+                if (!schedule) {
+                    schedule = document.querySelector('[name="schedule"]');
+                }
                 Array.from(document.querySelectorAll('.blocks-grid')).forEach(blocksGrid => {
                     if (schedule.value === blocksGrid.id) {
                         blocksGrid.classList.remove('hidden');
