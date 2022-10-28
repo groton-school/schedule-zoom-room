@@ -14,27 +14,27 @@ class EventTransform
      */
     public static function replaceProperties($calendar, $props)
     {
-        while ($event = $calendar->getComponent('vevent')) {
+        while ($event = $calendar->getComponent("vevent")) {
             /** @var Vevent $event */
             foreach ($props as $prop => $value) {
                 call_user_func_array(
-                    [$event, 'set' . ucfirst($prop)],
-                    is_array($value) ? $value : [ $value ]
+                    [$event, "set" . ucfirst($prop)],
+                    is_array($value) ? $value : [$value]
                 );
             }
             $calendar->setComponent($event, $event->getUid());
         }
         return $calendar;
     }
-    
+
     /**
      * @param Vcalendar $calendar
      * @param $rule
      */
-    public static function resetRecurrence($calendar, $rule) {
-        while ($event = $calendar->getComponent('vevent')) {
+    public static function resetRecurrence($calendar, $rule)
+    {
+        while ($event = $calendar->getComponent("vevent")) {
             /** @var Vevent $event */
-            // FIXME safer if it deleted existing RRULE, but moot coming from Blackbaud 
             $event->setRrule($rule);
             $calendar->setComponent($event, $event->getUid());
         }
