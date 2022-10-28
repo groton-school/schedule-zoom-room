@@ -35,6 +35,7 @@ class EventTransform
     {
         while ($event = $calendar->getComponent("vevent")) {
             /** @var Vevent $event */
+            // TODO safer if it deleted existing RRULE, but moot coming from Blackbaud
             $event->setRrule($rule);
             $calendar->setComponent($event, $event->getUid());
         }
