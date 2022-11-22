@@ -1,5 +1,8 @@
-CalExport.ics
 .git
 .github
 .gitignore
+
+*.md
 vendor
+
+*.ics
