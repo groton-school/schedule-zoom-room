@@ -1,8 +1,4 @@
-.git
-.github
-.gitignore
-
+#!include:.gitignore
+.git*
 *.md
-vendor
-
-*.ics
+.nova
