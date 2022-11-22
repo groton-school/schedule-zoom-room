@@ -9,7 +9,10 @@ use Kigkonsult\Icalcreator\Vevent;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../constants.php';
 
-if(empty($_POST)) {  
+// TODO Select a resource calendar and directly insert events
+// TODO Query or search by user for Blackbaud calendar?
+
+if(empty($_POST)) {
     require_once __DIR__ . '/../templates/form.html';
     exit;
 } else {
