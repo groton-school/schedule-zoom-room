@@ -1,2 +1,3 @@
+# TODO should be php74, but that fails to install on GAE
 runtime: php73
 entrypoint: serve public/index.php
