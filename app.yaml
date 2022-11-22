@@ -1,0 +1,2 @@
+runtime: php73
+entrypoint: serve public/index.php
