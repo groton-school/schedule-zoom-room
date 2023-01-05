@@ -45,6 +45,10 @@ class Extractor
             /** @var Vevent $event */
             $include = true;
             foreach($params[self::FILTERS] as $prop => $regex) {
+                /*
+                 * TODO prioritize (Y) events over others
+                 *   Avoid conflicts with (W) or (F, W), etc., representing students switching sections. (Y) is always the "main" section.
+                 */
                 $include = $include && preg_match($regex, $event->getSummary());
             }
             if ($include) {
