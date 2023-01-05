@@ -43,7 +43,7 @@
         .hidden {
             display: none;
         }
-        </style>
+    </style>
     <body>
         <div id="content">
             <h1>Schedule Zoom Room</h1>
@@ -73,31 +73,31 @@
                         <label>Zoom Room URL</label>
 
                         <label>Red</label>
-                        <input name="blocks[]" type="checkbox" value="RD"/>
+                        <input name="blocks[]" type="checkbox" value="RD" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Orange</label>
-                        <input name="blocks[]" type="checkbox" value="OR"/>
+                        <input name="blocks[]" type="checkbox" value="OR" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Yellow</label>
-                        <input name="blocks[]" type="checkbox" value="YL"/>
+                        <input name="blocks[]" type="checkbox" value="YL" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Green</label>
-                        <input name="blocks[]" type="checkbox" value="GR"/>
+                        <input name="blocks[]" type="checkbox" value="GR" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Light Blue</label>
-                        <input name="blocks[]" type="checkbox" value="LB"/>
+                        <input name="blocks[]" type="checkbox" value="LB" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Dark Blue</label>
-                        <input name="blocks[]" type="checkbox" value="DB"/>
+                        <input name="blocks[]" type="checkbox" value="DB" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Purple</label>
-                        <input name="blocks[]" type="checkbox" value="PR"/>
+                        <input name="blocks[]" type="checkbox" value="PR" />
                         <input name="zoom_urls[]" type="url" disabled />
                     </div>
 
@@ -107,39 +107,63 @@
                         <label>Zoom Room URL</label>
 
                         <label>W</label>
-                        <input name="blocks[]" type="checkbox" value="W"/>
+                        <input name="blocks[]" type="checkbox" value="W" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>X</label>
-                        <input name="blocks[]" type="checkbox" value="X"/>
+                        <input name="blocks[]" type="checkbox" value="X" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Y</label>
-                        <input name="blocks[]" type="checkbox" value="Y"/>
+                        <input name="blocks[]" type="checkbox" value="Y" />
                         <input name="zoom_urls[]" type="url" disabled />
 
                         <label>Z</label>
-                        <input name="blocks[]" type="checkbox" value="Z"/>
+                        <input name="blocks[]" type="checkbox" value="Z" />
                         <input name="zoom_urls[]" type="url" disabled />
                     </div>
                 </div>
 
                 <label>Calendar name</label>
-                <input name="calendar_name" type="text" value="Zoom Room Schedule"/>
+                <input
+                    name="calendar_name"
+                    type="text"
+                    value="Zoom Room Schedule"
+                />
             </form>
             <div>
                 <button type="submit" form="form">Go</button>
                 <button id="reset">Reset</button>
             </div>
-            <p><strong>How this works.</strong> This generates an ICS calendar file to import into a Zoom Room calendar. Paste in the webcal URL of a faculty member's schedule from the LMS. Check off the blocks for which you would like to include from the faculty calendar and paste in the relevant Zoom meeting URLs for each block. Optionally, give the calendar a meaningful name (&ldquo;Smith, Room 123&rdquo;). Click <em>Go</em> to download the ICS calendar of Zoom meetings.</p>
-            <p><a href="https://youtu.be/HzOvhdKELFM" target="_blank">Click here for a video walk-through</a></p>
+            <p>
+                <strong>How this works.</strong> This generates an ICS calendar
+                file to import into a Zoom Room calendar. Paste in the webcal
+                URL of a faculty member's schedule from the LMS. Check off the
+                blocks for which you would like to include from the faculty
+                calendar and paste in the relevant Zoom meeting URLs for each
+                block. Optionally, give the calendar a meaningful name
+                (&ldquo;Smith, Room 123&rdquo;). Click <em>Go</em> to download
+                the ICS calendar of Zoom meetings.
+            </p>
+            <p>
+                <a href="https://youtu.be/HzOvhdKELFM" target="_blank"
+                    >Click here for a video walk-through</a
+                >
+            </p>
         </div>
         <script>
+            // TODO auto-paste URL when checking a block checkbox?
+            // TODO auto-select entire field when clicking in a text box?
+            // TODO reset button to erase URLs _only_?
+
             const cookies = document.cookie.split('; ');
 
-            const getCookie = (key, value) =>  cookies.reduce((prev, curr) => {
+            const getCookie = (key, value) =>
+                cookies.reduce((prev, curr) => {
                     try {
-                        const [ignore, result] = curr.match(new RegExp(`^${key}=(.*)$`));
+                        const [ignore, result] = curr.match(
+                            new RegExp(`^${key}=(.*)$`)
+                        );
                         if (result) {
                             return result;
                         }
@@ -147,75 +171,108 @@
                         // do nothing
                     }
                     return prev;
-                }, value)
+                }, value);
 
             const setCookie = (input, key) => {
-                document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(input.value)}`;
-            }
+                document.cookie = `${encodeURIComponent(
+                    key
+                )}=${encodeURIComponent(input.value)}`;
+            };
 
             const trackWithCookie = (key, value) => {
                 const input = document.querySelector(`[name="${key}"]`);
                 input.value = getCookie(key, value);
-                input.addEventListener('change', setCookie.bind(null, input, key));
+                input.addEventListener(
+                    'change',
+                    setCookie.bind(null, input, key)
+                );
                 return input.value;
-            }
+            };
 
-            const updateSchedule = (schedule) => {
+            const updateSchedule = schedule => {
                 if (!schedule) {
                     schedule = document.querySelector('[name="schedule"]');
                 }
-                Array.from(document.querySelectorAll('.blocks-grid')).forEach(blocksGrid => {
-                    if (schedule.value === blocksGrid.id) {
-                        blocksGrid.classList.remove('hidden');
-                    } else {
-                        blocksGrid.classList.add('hidden');
+                Array.from(document.querySelectorAll('.blocks-grid')).forEach(
+                    blocksGrid => {
+                        if (schedule.value === blocksGrid.id) {
+                            blocksGrid.classList.remove('hidden');
+                        } else {
+                            blocksGrid.classList.add('hidden');
+                        }
                     }
-                });
-            }
+                );
+            };
 
-            const start = new Date(trackWithCookie('start', (new Date()).toLocaleDateString('en-CA')));
-            const end_extract = trackWithCookie('end_extract', (new Date(start.getTime() + start.getTimezoneOffset() * 60 * 1000 + 7 * 24 * 60 * 60 * 1000)).toLocaleDateString('en-CA'));
+            const start = new Date(
+                trackWithCookie('start', new Date().toLocaleDateString('en-CA'))
+            );
+            const end_extract = trackWithCookie(
+                'end_extract',
+                new Date(
+                    start.getTime() +
+                        start.getTimezoneOffset() * 60 * 1000 +
+                        7 * 24 * 60 * 60 * 1000
+                ).toLocaleDateString('en-CA')
+            );
             trackWithCookie('end_schedule', end_extract);
             trackWithCookie('schedule', 'academic');
             updateSchedule();
 
-            document.querySelector('input[name="start"]').addEventListener('change', start => {
-                const end = document.querySelector('input[name="end_extract"]');
-                if (start.value != '' && end.value == '') {
-                    console.log(start.value);
-                }
-            })
+            document
+                .querySelector('input[name="start"]')
+                .addEventListener('change', start => {
+                    const end = document.querySelector(
+                        'input[name="end_extract"]'
+                    );
+                    if (start.value != '' && end.value == '') {
+                        console.log(start.value);
+                    }
+                });
 
             const toggleZoomUrl = zoomUrl => {
                 zoomUrl.disabled = !zoomUrl.disabled;
-            }
-            Array.from(document.querySelectorAll('input[name="blocks[]"]')).forEach(checkbox => {
-                checkbox.addEventListener('click', toggleZoomUrl.bind(null, checkbox.nextElementSibling));
+            };
+            Array.from(
+                document.querySelectorAll('input[name="blocks[]"]')
+            ).forEach(checkbox => {
+                checkbox.addEventListener(
+                    'click',
+                    toggleZoomUrl.bind(null, checkbox.nextElementSibling)
+                );
             });
 
-            const zoomUrls = Array.from(document.querySelectorAll('input[name="zoom_urls[]"]'));
+            const zoomUrls = Array.from(
+                document.querySelectorAll('input[name="zoom_urls[]"]')
+            );
             const initialWidth = zoomUrls[0].clientWidth;
-            const resizeToFitUrl = (input) => {
+            const resizeToFitUrl = input => {
                 const test = document.createElement('div');
                 test.classList.add('test');
-                    document.body.appendChild(test);
+                document.body.appendChild(test);
                 let width = initialWidth;
                 zoomUrls.forEach(zoomUrl => {
                     test.innerText = zoomUrl.value;
                     width = Math.max(width, test.clientWidth);
-                })
+                });
                 test.remove();
                 if (width > initialWidth) {
                     input.parentElement.style.gridTemplateColumns = `auto auto calc(${width}px + 1em)`;
                 } else {
-                    input.parentElement.style.gridTemplateColumns = 'auto auto 1fr';
+                    input.parentElement.style.gridTemplateColumns =
+                        'auto auto 1fr';
                 }
-            }
+            };
             zoomUrls.forEach(zoomUrl => {
-                zoomUrl.addEventListener('input', resizeToFitUrl.bind(null, zoomUrl));
-            })
+                zoomUrl.addEventListener(
+                    'input',
+                    resizeToFitUrl.bind(null, zoomUrl)
+                );
+            });
 
-            document.querySelector('button#reset').addEventListener('click', () => location.reload());
+            document
+                .querySelector('button#reset')
+                .addEventListener('click', () => location.reload());
         </script>
     </body>
 </html>

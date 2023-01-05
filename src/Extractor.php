@@ -29,6 +29,7 @@ class Extractor
 
         $params[self::CALENDAR_URL] = preg_replace('/^webcal(s?):\/\/(.*)/i', 'http$1://$2', $params[self::CALENDAR_URL]);
 
+        // FIXME crashes on invalid URL
         $parser = new Vcalendar([Vcalendar::UNIQUE_ID => $params[self::UNIQUE_ID]]);
         $calendar = $parser->parse(file_get_contents($params[self::CALENDAR_URL]));
         $events = $calendar->selectComponents($params[self::START_DATE], $params[self::END_DATE], null, null, null, null, 'vevent', true, true, false);
