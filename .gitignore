@@ -1,4 +1,6 @@
 CalExport.ics
 /vendor
 .DS_Store
-.nova
+/.nova/*
+!/.nova/Artwork
+!/.nova/Configuration.json
