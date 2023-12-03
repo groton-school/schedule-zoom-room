@@ -1,6 +1,5 @@
-CalExport.ics
-/vendor
 .DS_Store
-/.nova/*
-!/.nova/Artwork
-!/.nova/Configuration.json
+/.env
+/node_modules
+/public
+/vendor

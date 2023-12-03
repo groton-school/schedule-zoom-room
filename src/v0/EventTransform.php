@@ -1,6 +1,6 @@
 <?php
 
-namespace Groton\ScheduleZoomRoom;
+namespace Groton\ScheduleZoomRoom\v0;
 
 use Kigkonsult\Icalcreator\Vcalendar;
 use Kigkonsult\Icalcreator\Vevent;

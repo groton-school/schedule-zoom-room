@@ -1,4 +1,10 @@
-#!include:.gitignore
-.git*
-*.md
-.nova
+*
+.DS_Store
+!/app.yaml
+!/composer.*
+!/php.ini
+!/public
+!/src
+/src/*
+!/src/*.php
+!/src/server
