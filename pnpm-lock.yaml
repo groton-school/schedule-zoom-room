@@ -9,8 +9,8 @@ devDependencies:
     specifier: latest
     version: 1.1.2
   '@battis/partly-gcloudy':
-    specifier: ^0.3.0
-    version: 0.3.0
+    specifier: ^0.3.2
+    version: 0.3.2
   '@battis/prettier-config':
     specifier: latest
     version: 1.2.2
@@ -83,13 +83,14 @@ packages:
       - supports-color
     dev: true
 
-  /@battis/partly-gcloudy@0.3.0:
-    resolution: {integrity: sha512-GyGO/YY7+Y2jRXk6bUzTG2pra6toXAZJ8RNrFcNeUHsHLGjUWYKMcGVUYZx8kNwoR6bbOKpO002PsA1p30/Lrw==}
+  /@battis/partly-gcloudy@0.3.2:
+    resolution: {integrity: sha512-204zVwOJhEb186zx5Kqb3rWUkEj53z5iL08ufCOf1K0mBtb9YLlJlGumYrx6+nu+05XyVg+UpzoNmirqJhyXIw==}
     engines: {node: '>=12.17'}
     dependencies:
       '@battis/qui-cli': 0.3.7
-      '@battis/typescript-tricks': 0.2.2
+      '@battis/typescript-tricks': 0.4.2
       '@inquirer/core': 3.1.2
+      '@inquirer/select': 1.3.1
       '@inquirer/type': 1.1.5
       rword: 3.2.1
     dev: true
@@ -122,8 +123,8 @@ packages:
       winston: 3.11.0
     dev: true
 
-  /@battis/typescript-tricks@0.2.2:
-    resolution: {integrity: sha512-Q0Brc5Qht0HqB0CuGIaLV8l7iyjsWYgnIjFKpGM3G5jfAiaIrxSFvQFxkwYBZrzlIM5IFbto8Rap3D0HJ3OJQA==}
+  /@battis/typescript-tricks@0.4.2:
+    resolution: {integrity: sha512-sktHyOradJYGND4V4h+L1q9mifjRoi0yNOdMgpD9ou2UUK4vpmMy7YpIp33NHFbUBdTTvLZlCB5Rk8AhJsExXw==}
     dev: true
 
   /@battis/webpack@0.3.0:
@@ -1623,7 +1624,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.2
-      caniuse-lite: 1.0.30001565
+      caniuse-lite: 1.0.30001566
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1789,7 +1790,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001565
+      caniuse-lite: 1.0.30001566
       electron-to-chromium: 1.4.601
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
@@ -1891,13 +1892,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.22.2
-      caniuse-lite: 1.0.30001565
+      caniuse-lite: 1.0.30001566
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite@1.0.30001565:
-    resolution: {integrity: sha512-xrE//a3O7TP0vaJ8ikzkD2c2NgcVUvsEe2IvFTntV4Yd1Z9FVzh+gW+enX96L0psrbaFMcVcH2l90xNuGDWc8w==}
+  /caniuse-lite@1.0.30001566:
+    resolution: {integrity: sha512-ggIhCsTxmITBAMmK8yZjEhCO5/47jKXPu6Dha/wuCS4JePVL+3uiDEBuhu2aIoT+bqTOR8L76Ip1ARL9xYsEJA==}
     dev: true
 
   /caw@2.0.1:
