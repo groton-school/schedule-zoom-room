@@ -64,3 +64,8 @@ Populate Zoom Room resource calendar in Google from Blackbaud LMS schedule
 ## History
 
 This was [previously](https://github.com/groton-school/schedule-zoom-room/tree/27b08a6529d30751d1af43bad8b0f542044c0596) a _much_ more manual script that facilitated generating ICS files from teacher's schedules to be imported into the Google resource calendars. While there is still a fair bit of manual setup to make this work, the end result is both a) resilient to schedule changes, b) automatically syncing once setup, c) less dependent on the human involved being careful. All good things.
+
+- The [`heroku`](https://github.com/groton-school/schedule-zoom-room/tree/heroku) branch is the initial version, designed to run on Heroku as a PHP-processed form.
+- The [`google-app-engine`](https://github.com/groton-school/schedule-zoom-room/tree/google-app-engine) branch is a conversion and continuing development of the `heroku` branch, designed to run as a PHP-processed form on Google App Engine.
+
+Current development in the `main` branch is in Typescript, compiled by `clasp` into Google Apps Script attached to a Google Sheet.
