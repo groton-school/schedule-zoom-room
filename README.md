@@ -7,6 +7,8 @@ Populate Zoom Room resource calendar in Google from Blackbaud LMS schedule
 - Your classroom assignments are reasonably up-to-date in the Blackbaud LMS
 - You are using Google resource calendars to schedule your Zoom Rooms.
 - You are using something (e.g. SchoolCal) to sync class schedule information into Google resource calendars.
+- You are accessing the Blackbaud LMS with sufficient privileges to create advanced lists, see courses, etc.
+- You are creating the `Schedule Zoom Rooms` sheet and script with a Google user with sufficient permissions to be able to update all of the affected resource calendars.
 
 ## Setup
 
