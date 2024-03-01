@@ -15,7 +15,8 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@battis/gas-lighter": "^0.5.1",
-    "@types/node": "^20.11.23"
+    "@battis/google.calendar": "^0.1.0",
+    "@types/node": "^20.11.24"
   },
   "devDependencies": {
     "@battis/eslint-config": "latest",

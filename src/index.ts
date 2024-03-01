@@ -1,6 +1,6 @@
-import Events from './Calendar/v3/Events';
 import Course from './Course';
 import g from '@battis/gas-lighter';
+import Calendar from '@battis/google.calendar';
 
 const EOL = '\r\n';
 const RUN = Utilities.getUuid();
@@ -47,7 +47,7 @@ global.syncToResourceCalendars = () => {
       if (attempts > 1) {
         Logger.log({ url, attempts, success });
       }
-      const json: Events = JSON.parse(response.getContentText());
+      const json: Calendar.v3.Events = JSON.parse(response.getContentText());
       let count = 0;
       if (json.items?.length) {
         json.items.forEach((event) => {
