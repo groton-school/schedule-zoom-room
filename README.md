@@ -12,7 +12,12 @@ Populate Zoom Room resource calendar in Google from Blackbaud LMS schedule
 
 ## Setup
 
-1. In SchoolCal, configure the template for your flow that syncs into your resource calendars to include the section's Blackbaud Group ID. (For example, the value for our `Description` field in the template is `[GroupID={{Section.InternalClassId}}]`.)
+1. In SchoolCal, configure the template for your flow that syncs into your resource calendars to include the section's Blackbaud Group ID. (For example, the value for our `Description` field in the template is
+
+   ```mustache
+   [GroupID={{Section.InternalClassId}}]
+   ```
+
 2. Define the [Current Year Courses](./schema/Current%20Year%20Courses) advanced list in the Blackbaud LMS.
 3. Create the [Schedule Zoom Rooms](./schema/Schedule%20Zoom%20Rooms.xlsx) sheet in Google Sheets.
 4. Import the advanced list into the `Current Year Courses` worksheet in the sheet. (Easiest way is to use [Blackbaud-to-Google Lists](https://github.com/groton-school/blackbaud-to-google-lists).)
@@ -21,20 +26,20 @@ Populate Zoom Room resource calendar in Google from Blackbaud LMS schedule
 7. Manually click through the bulletin boards of each course that has an associated resource claendar on the `Zoom Rooms` sheet and copy-and-paste in the courses Zoom Room URL.
 8. Clone this repository and install dependencies:
 
-```sh
-git clone git@github.com:groton-school/schedule-zoom-room.git
-cd schedule-zoom-room
-npm install
-```
+   ```sh
+   git clone git@github.com:groton-school/schedule-zoom-room.git
+   cd schedule-zoom-room
+   npm install
+   ```
 
 9. In the sheet, in the `Extensions` menu, open the `Apps Script`.
 10. Copy the project ID of the script: `https://script.google.com/u/0/home/projects/<project ID>/edit`
 11. Use [`clasp`](https://developers.google.com/apps-script/guides/clasp) (included as a script dependency) to connect the cloned repo to the project and deploy the project into the script:
 
-```sh
-npx clasp clone <project-id>
-npm run deploy
-```
+    ```sh
+    npx clasp clone <project-id>
+    npm run deploy
+    ```
 
 12. In the [Google Cloud console](https://console.cloud.google.com), create a new project.
 
@@ -45,11 +50,9 @@ npm run deploy
 13. In the script, visit the Project Settings <img src="./docs/settings-icon.png" style="height: 1em" /> and change the project from the default to the project number you copied from the Google Cloud Project.
 14. Switch to the Editor <img src="./docs/editor-icon.png" style="height: 1em" /> and run `syncToResourceCalendars`. Give the script access to all the scopes that it requests.
 
-    `https://www.googleapis.com/auth/calendar` so that the script's OAuth token will have sufficient scope to list and update calendar events (in the resource calendars).
-
-    `https://www.googleapis.com/auth/spreadsheets` to access the spreadsheet of data (to which the script is attached)
-
-    `https://www.googleapis.com/auth/script.external_request` so the script can make external requests to the Google Calendar API (because it batches the requests, it needs to use `UrlFetchApp` rather than the built-in `CalendarApp` API).
+    - `https://www.googleapis.com/auth/calendar` so that the script's OAuth token will have sufficient scope to list and update calendar events (in the resource calendars).
+    - `https://www.googleapis.com/auth/spreadsheets` to access the spreadsheet of data (to which the script is attached)
+    - `https://www.googleapis.com/auth/script.external_request` so the script can make external requests to the Google Calendar API (because it batches the requests, it needs to use `UrlFetchApp` rather than the built-in `CalendarApp` API).
 
 15. Switch to the Triggers <img src="./docs/trigger-icon.png" style="height: 1em; "/> and schedule `syncToResourceCalendars` to run periodically (e.g. every day after SchoolCal updates the resource calendars).
 
