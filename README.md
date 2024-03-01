@@ -29,10 +29,10 @@ npm install
 
 9. In the sheet, in the `Extensions` menu, open the `Apps Script`.
 10. Copy the project ID of the script: `https://script.google.com/u/0/home/projects/<project ID>/edit`
-11. Use clasp to connect the cloned repo to the project and deploy the project into the script:
+11. Use [`clasp`](https://developers.google.com/apps-script/guides/clasp) (included as a script dependency) to connect the cloned repo to the project and deploy the project into the script:
 
 ```sh
-clasp clone <project-id>
+npx clasp clone <project-id>
 npm run deploy
 ```
 
