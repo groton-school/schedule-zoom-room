@@ -1,0 +1,6 @@
+**/**
+!appsscript.json
+!build/*.js
+!css/*.html
+!js/*.html
+!templates/*.html

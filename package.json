@@ -1,29 +1,27 @@
 {
-  "name": "schedule-zoom-room",
-  "version": "1.0.0",
+  "name": "@groton/schedule-zoom-room",
+  "version": "2.0.0",
+  "description": "Sync Zoom Room URLs into resource calendars",
   "scripts": {
-    "setup": "./bin/setup.mjs",
     "build": "webpack",
     "deploy": "run-s deploy:*",
-    "deploy:build": "npm run build",
-    "deploy:publish": "./bin/deploy.mjs",
-    "logs": "./bin/logs.mjs",
-    "update": "pnpm up; npm up --lock-file-only"
+    "deploy:build": "pnpm run build",
+    "deploy:push": "clasp push --force"
   },
   "author": {
     "name": "Seth Battis",
     "url": "https://github.com/groton-school"
   },
   "license": "GPL-3.0",
+  "dependencies": {
+    "@battis/gas-lighter": "^0.5.1",
+    "@types/node": "^20.11.23"
+  },
   "devDependencies": {
     "@battis/eslint-config": "latest",
-    "@battis/partly-gcloudy": "^0.3.2",
     "@battis/prettier-config": "latest",
-    "@battis/qui-cli": "^0.3.7",
-    "@battis/webpack": "latest",
-    "@types/node": "^20.10.3",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.3.2"
+    "@google/clasp": "^2.4.2",
+    "npm-run-all": "^4.1.5"
   },
   "prettier": "@battis/prettier-config",
   "eslintConfig": {

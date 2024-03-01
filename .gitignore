@@ -1,5 +1,6 @@
+.clasp.json
 .DS_Store
 /.env
+/build
 /node_modules
 /public
-/vendor

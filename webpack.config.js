@@ -1,7 +1,4 @@
-module.exports = require("@battis/webpack/ts/spa")({
+module.exports = require('@battis/gas-lighter/webpack.config')({
   root: __dirname,
-  appName: "Schedule Zoom Room",
-  entry: "./src/client/index.ts",
-  template: "template",
-  build: "public",
+  production: true
 });
