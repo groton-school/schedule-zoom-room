@@ -36,7 +36,22 @@ npx clasp clone <project-id>
 npm run deploy
 ```
 
-12. In the script, visit the Triggers <img src="./docs/trigger-icon.png" style="height: 1em; "/> and schedule `syncToResourceCalendars` to run periodically (e.g. every day after SchoolCal updates the resource calendars).
+12. In the [Google Cloud console](https://console.cloud.google.com), create a new project.
+
+    1. Set up the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent). The only scope you need to add is `https://www.googleapis.com/auth/calendar`
+    2. Enable the [Google Calendar API](https://console.cloud.google.com/apis/api/calendar-json.googleapis.com/)
+    3. Copy the project number from the [Project Dashboard](https://console.cloud.google.com/home/dashboard).
+
+13. In the script, visit the Project Settings <img src="./docs/settings-icon.png" style="height: 1em" /> and change the project from the default to the project number you copied from the Google Cloud Project.
+14. Switch to the Editor <img src="./docs/editor-icon.png" style="height: 1em" /> and run `syncToResourceCalendars`. Give the script access to all the scopes that it requests.
+
+    `https://www.googleapis.com/auth/calendar` so that the script's OAuth token will have sufficient scope to list and update calendar events (in the resource calendars).
+
+    `https://www.googleapis.com/auth/spreadsheets` to access the spreadsheet of data (to which the script is attached)
+
+    `https://www.googleapis.com/auth/script.external_request` so the script can make external requests to the Google Calendar API (because it batches the requests, it needs to use `UrlFetchApp` rather than the built-in `CalendarApp` API).
+
+15. Switch to the Triggers <img src="./docs/trigger-icon.png" style="height: 1em; "/> and schedule `syncToResourceCalendars` to run periodically (e.g. every day after SchoolCal updates the resource calendars).
 
 ## Maintenance
 
