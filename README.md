@@ -58,7 +58,7 @@ Populate Zoom Room resource calendar in Google from Blackbaud LMS schedule
 
 ## Maintenance
 
-- At the start of each term, the `Current Year Courses` will need to be updated (again, easy if you're using [Blackbaud-to-Google Lists](https://github.com/groton-school/blackbaud-to-google-lists)). The Group IDs column in `Zoom Rooms` will need to be updated afterwards to incldue any new Group IDs (shown in place of the column header if there are any missing).
+- At the start of each term, the `Current Year Courses` will need to be updated (again, easy if you're using [Blackbaud-to-Google Lists](https://github.com/groton-school/blackbaud-to-google-lists)). The Group IDs column in `Zoom Rooms` will need to be updated afterwards to include any new Group IDs (shown in place of the column header if there are any missing).
 - At the start of each term, classes that have resource calendars but no Zoom Room URL will need to be updated manually by visiting their bulletin board (links and the field to update are both in `Zoom Rooms`).
 
 ## History
