@@ -15,7 +15,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@battis/gas-lighter": "^0.5.1",
-    "@battis/google.calendar": "^0.1.4",
+    "@battis/google.calendar": "^0.1.5",
     "@types/node": "^20.11.27"
   },
   "devDependencies": {

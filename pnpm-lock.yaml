@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.5.1
     version: 0.5.1
   '@battis/google.calendar':
-    specifier: ^0.1.4
-    version: 0.1.4
+    specifier: ^0.1.5
+    version: 0.1.5
   '@types/node':
     specifier: ^20.11.27
     version: 20.11.27
@@ -202,16 +202,16 @@ packages:
       - webpack-dev-server
     dev: false
 
-  /@battis/google.base@0.1.0:
-    resolution: {integrity: sha512-X9D9YcbvEptZ75tl/6g2f7fNxnXois8KMXJ4uG3LcwqrHaJdsNFqyty0ZBouvlkIFsuTkAO34yTSPPTm127fmw==}
+  /@battis/google.base@0.1.1:
+    resolution: {integrity: sha512-xoLqsRCrplDDFF1bYelPB1+qAGPezU3ztDBYP+ryMxv1D6pb5n+fPCXvO0ey9fYFGYsxZw02Qg+XXBXVSmNbFw==}
     dependencies:
       '@tsconfig/recommended': 1.0.3
     dev: false
 
-  /@battis/google.calendar@0.1.4:
-    resolution: {integrity: sha512-r5Ao6hF0KoYsbC3gnY0UHv3vWop1KuduL8CgiThkI/TgYU3ut4bcVrmU7h17vwbqHS6MqljooHiMd5mD+ZdUCw==}
+  /@battis/google.calendar@0.1.5:
+    resolution: {integrity: sha512-wHolkTobyQOm2ljW8Tzs6XcRbh45ChPFzkTSg2tAuxm0QF0QKMrrmxTR3tGgYG9MB1NDj0X9RJKL8wowXsJzBw==}
     dependencies:
-      '@battis/google.base': 0.1.0
+      '@battis/google.base': 0.1.1
       '@tsconfig/recommended': 1.0.3
     dev: false
 
@@ -1063,7 +1063,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001597
-      electron-to-chromium: 1.4.704
+      electron-to-chromium: 1.4.705
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: false
@@ -1433,8 +1433,8 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
 
-  /electron-to-chromium@1.4.704:
-    resolution: {integrity: sha512-OK01+86Qvby1V6cTiowVbhp25aX4DLZnwar+NocAOXdzKAByd+jq5156bmo4kHwevWMknznW18Y/Svfk2dU91A==}
+  /electron-to-chromium@1.4.705:
+    resolution: {integrity: sha512-LKqhpwJCLhYId2VVwEzFXWrqQI5n5zBppz1W9ehhTlfYU8CUUW6kClbN8LHF/v7flMgRdETS772nqywJ+ckVAw==}
     dev: false
 
   /emoji-regex@8.0.0:
