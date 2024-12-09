@@ -8,16 +8,18 @@ export default class Course {
   public readonly calendarId: string;
   public readonly zoomRoomUrl: string;
 
-  public constructor([
-    groupId,
-    normalizedTitle,
-    beginDate,
-    endDate,
-    bulletinBoardUrl,
-    normalizedRoom,
-    calendarId,
-    zoomRoomUrl
-  ]: string[]) {
+  public constructor(
+    [
+      groupId,
+      normalizedTitle,
+      beginDate,
+      endDate,
+      bulletinBoardUrl,
+      normalizedRoom,
+      calendarId,
+      zoomRoomUrl
+    ]: string[]
+  ) {
     this.id = groupId;
     this.title = normalizedTitle;
     this.beginDate = new Date(beginDate).toISOString();

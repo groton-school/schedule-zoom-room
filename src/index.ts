@@ -1,6 +1,6 @@
-import Course from './Course';
 import g from '@battis/gas-lighter';
 import Calendar from '@battis/google.calendar';
+import Course from './Course';
 
 const EOL = '\r\n';
 const RUN = Utilities.getUuid();
@@ -17,9 +17,14 @@ global.syncToResourceCalendars = () => {
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Zoom Rooms')
   );
   data.shift(); // column titles
-  data
-    .map((row) => new Course(row))
-    .filter((course) => course.calendarId && course.zoomRoomUrl)
+  const courses = data.map((row) => {
+    if (row[1] !== '#N/A') {
+      return new Course(row);
+    }
+    return undefined;
+  });
+  courses
+    .filter((course) => course && course.calendarId && course.zoomRoomUrl)
     .forEach((course) => {
       const url = `https://www.googleapis.com/calendar/v3/calendars/${course.calendarId}/events?eventTypes=default&timeMin=${course.beginDate}&timeMax=${course.endDate}&q=[GroupID=${course.id}]`;
       let response: GoogleAppsScript.URL_Fetch.HTTPResponse;
