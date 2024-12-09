@@ -1,6 +1,6 @@
 {
   "name": "@groton/schedule-zoom-room",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Sync Zoom Room URLs into resource calendars",
   "scripts": {
     "build": "webpack",
