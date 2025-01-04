@@ -20,7 +20,7 @@
   "dependencies": {
     "@battis/gas-lighter": "^0.5.2",
     "@battis/google.calendar": "^0.1.5",
-    "@types/node": "^22.10.3"
+    "@types/node": "^22.10.5"
   },
   "devDependencies": {
     "@battis/eslint-config": "^2.0.3",
