@@ -13,14 +13,10 @@
     "deploy:build": "pnpm run build",
     "deploy:push": "clasp push --force"
   },
-  "prettier": "@battis/prettier-config",
-  "eslintConfig": {
-    "extends": "@battis/eslint-config"
-  },
   "dependencies": {
     "@battis/gas-lighter": "^0.5.2",
     "@battis/google.calendar": "^0.1.5",
-    "@types/node": "^22.13.0"
+    "@types/node": "^22.13.1"
   },
   "devDependencies": {
     "@battis/eslint-config": "^2.0.3",
